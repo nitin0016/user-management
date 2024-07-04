@@ -1,0 +1,66 @@
+<div class="py-2">
+  <h2 class="text-center">Student Record</h2>
+  <div class="d-flex justify-content-between m-auto">
+    <div class="col-6">
+      <div class="col-6">
+        <div class="input-group">
+          <input type="text" class="form-control" #searchInput placeholder="Search">
+          <span class="input-group-text"><i class="bi bi-search" (click)="onSearch(searchInput)"></i> </span>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of studentData;index as i">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.age}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.phone}}</td>
+            <td class=""><i class="bi bi-pencil mx-2 text-success " (click)="editStudent(data)"></i>
+              <i class="bi bi-trash text-danger" (click)="deleteStudent(data)" ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5">
+      <h4 class="text-center bg-secondary-subtle m-0">Add New Student</h4>
+      <form class="p-4 bg-secondary-subtle" [formGroup]="studentForm" (ngSubmit)="onSubmit()" >
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="name" formControlName="name">
+        </div>
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input type="number" class="form-control" id="age" formControlName="age">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address" formControlName="address">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" class="form-control" id="phone" formControlName="phone">
+        </div>
+        <button type="submit"*ngIf="!studentForm.value.id" [disabled]="!studentForm.valid" class="btn btn-primary">Submit</button>
+        <button  *ngIf="studentForm.value.id" [disabled]="!studentForm.valid" class="btn btn-Success" (click)="onUpdate()">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
