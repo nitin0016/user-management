@@ -1,0 +1,29 @@
+# Angular specific
+.angular/
+.angular/cache/
+
+# Compiled output
+dist/
+out-tsc/
+
+# Dependencies
+node_modules/
+
+# IDE specific files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
